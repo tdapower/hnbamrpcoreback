@@ -31,6 +31,20 @@ namespace MRPSystemBackend.API.Hospital
             return Ok(result);
         }
 
+        [HttpGet]
+        [Route("GetHospitals")]
+        public IActionResult GetHospitals()
+        {
+            var result = hospitalRepository.GetHospitals();
+            if (result == null)
+            {
+                return NotFound();
+            }
+            return Ok(result);
+        }
+
+
+
         [HttpPost]
         [Route("SearchHospital")]
         public IActionResult SearchAssures([FromBody] SearchHospital searchHospital)
@@ -78,6 +92,12 @@ namespace MRPSystemBackend.API.Hospital
             }
             return Ok(result);
         }
+
+
+
+
+        
+
 
 
     }

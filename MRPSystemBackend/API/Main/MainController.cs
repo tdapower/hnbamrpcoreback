@@ -73,6 +73,17 @@ namespace MRPSystemBackend.API.Main
             return Ok(result);
         }
 
+        [HttpPost]
+        [Route("SearchMainData")]
+        public IActionResult SearchAssures([FromBody] SearchMain searchMain)
+        {
+            var result = mainRepository.SearchMainData(searchMain);
+            if (result == null)
+            {
+                return NotFound();
+            }
+            return Ok(result);
+        }
 
 
     }

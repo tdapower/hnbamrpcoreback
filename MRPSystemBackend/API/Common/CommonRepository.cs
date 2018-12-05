@@ -297,5 +297,92 @@ namespace MRPSystemBackend.API.Common
 
             return result;
         }
+
+        public IEnumerable<SignPerson> GetAllSignPersons()
+        {
+            IEnumerable<SignPerson> result = null;
+            try
+            {
+                var dyParam = new OracleDynamicParameters();
+                dyParam.Add("OPResult", OracleDbType.RefCursor, ParameterDirection.Output);
+
+                var conn = this.GetConnection();
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    var query = "MRPSGetSignPersons";
+
+                    result = SqlMapper.Query<SignPerson>(conn, query, param: dyParam, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
+
+        public IEnumerable<HnbaBranch> GetAllHnbaBranches()
+        {
+            IEnumerable<HnbaBranch> result = null;
+            try
+            {
+                var dyParam = new OracleDynamicParameters();
+                dyParam.Add("OPResult", OracleDbType.RefCursor, ParameterDirection.Output);
+
+                var conn = this.GetConnection();
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    var query = "MRPSGetHNBABranches";
+
+                    result = SqlMapper.Query<HnbaBranch>(conn, query, param: dyParam, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
+
+        public IEnumerable<LoanType> GetAllLoanTypes()
+        {
+            IEnumerable<LoanType> result = null;
+            try
+            {
+                var dyParam = new OracleDynamicParameters();
+                dyParam.Add("OPResult", OracleDbType.RefCursor, ParameterDirection.Output);
+
+                var conn = this.GetConnection();
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    var query = "MRPSGetLoanTypes";
+
+                    result = SqlMapper.Query<LoanType>(conn, query, param: dyParam, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
     }
 }

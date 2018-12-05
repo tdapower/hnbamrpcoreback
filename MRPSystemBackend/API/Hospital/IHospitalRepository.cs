@@ -9,6 +9,8 @@ namespace MRPSystemBackend.API.Hospital
     public interface IHospitalRepository
     {
         IEnumerable<Hospital> SearchHospitals(SearchHospital searchHospital);
+
+        IEnumerable<Hospital> GetHospitals();
         Hospital GetHospitalById(int hospitalId);
 
         int AddHospital(Hospital hospital);

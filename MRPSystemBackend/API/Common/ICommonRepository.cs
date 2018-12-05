@@ -24,6 +24,9 @@ namespace MRPSystemBackend.API.Common
         IEnumerable<MRPUser> GetAllMRPUsers();
         IEnumerable<UserPendingJob> GetPendingJobsOfUsers();
 
+        IEnumerable<SignPerson> GetAllSignPersons();
 
+        IEnumerable<HnbaBranch> GetAllHnbaBranches();
+        IEnumerable<LoanType> GetAllLoanTypes();
     }
 }

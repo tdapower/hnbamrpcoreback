@@ -111,7 +111,17 @@ namespace MRPSystemBackend.API.Common
             return Ok(result);
         }
 
-
+        [HttpGet]
+        [Route("GetAllSignPersons")]
+        public IActionResult GetAllSignPersons()
+        {
+            var result = commonRepository.GetAllSignPersons();
+            if (result == null)
+            {
+                return NotFound();
+            }
+            return Ok(result);
+        }
         [HttpGet]
         [Route("GetPendingJobsOfUsers")]
         public IActionResult GetPendingJobsOfUsers()
@@ -123,5 +133,31 @@ namespace MRPSystemBackend.API.Common
             }
             return Ok(result);
         }
+
+        [HttpGet]
+        [Route("GetAllHnbaBranches")]
+        public IActionResult GetAllHnbaBranches()
+        {
+            var result = commonRepository.GetAllHnbaBranches();
+            if (result == null)
+            {
+                return NotFound();
+            }
+            return Ok(result);
+        }
+
+        [HttpGet]
+        [Route("GetAllLoanTypes")]
+        public IActionResult GetAllLoanTypes()
+        {
+            var result = commonRepository.GetAllLoanTypes();
+            if (result == null)
+            {
+                return NotFound();
+            }
+            return Ok(result);
+        }
+
+
     }
 }

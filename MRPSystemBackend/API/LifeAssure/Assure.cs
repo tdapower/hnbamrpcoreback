@@ -16,7 +16,7 @@ namespace MRPSystemBackend.API.LifeAssure
         public string DOB { get; set; }
         public int Age { get; set; }
         public string Gender { get; set; }
-       
+
         [StringLength(15)]
         public string NIC { get; set; }
         public int NationalityId { get; set; }
@@ -34,6 +34,7 @@ namespace MRPSystemBackend.API.LifeAssure
         public int IsSmoker { get; set; }
         public int IsFemaleRebate { get; set; }
         public int IsVIP { get; set; }
+        public int IsPoliticallyExposed { get; set; }
         public string RegisterDate { get; set; }
     }
 }

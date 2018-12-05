@@ -208,5 +208,36 @@ namespace MRPSystemBackend.API.Hospital
             }
             return result;
         }
+
+        public IEnumerable<Hospital> GetHospitals()
+        {
+            IEnumerable<Hospital> result = null;
+            try
+            {
+                var dyParam = new OracleDynamicParameters();
+                
+                dyParam.Add("OPResult", OracleDbType.RefCursor, ParameterDirection.Output);
+                
+                var conn = this.GetConnection();
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    var query = "MRPSGetHospitals";
+                    result = SqlMapper.Query<Hospital>(conn, query, param: dyParam, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
+
+    
     }
 }

@@ -54,6 +54,7 @@ namespace MRPSystemBackend.API.LifeAssure
                 parameters.Add("IPIsSmoker", assure.IsSmoker);
                 parameters.Add("IPIsFemaleRebate", assure.IsFemaleRebate);
                 parameters.Add("IPIsVIP", assure.IsVIP);
+                parameters.Add("IPIsPoliticallyExposed", assure.IsPoliticallyExposed);
 
                 parameters.Add("IPShouldCommit", 1);
 
@@ -108,6 +109,7 @@ namespace MRPSystemBackend.API.LifeAssure
                 parameters.Add("IPIsSmoker", assure.IsSmoker);
                 parameters.Add("IPIsFemaleRebate", assure.IsFemaleRebate);
                 parameters.Add("IPIsVIP", assure.IsVIP);
+                parameters.Add("IPIsPoliticallyExposed", assure.IsPoliticallyExposed);
 
                 parameters.Add("IPShouldCommit", 0);
 
@@ -265,8 +267,9 @@ namespace MRPSystemBackend.API.LifeAssure
                 parameters.Add("IPIsSmoker", assure.IsSmoker);
                 parameters.Add("IPIsFemaleRebate", assure.IsFemaleRebate);
                 parameters.Add("IPIsVIP", assure.IsVIP);
+                parameters.Add("IPIsPoliticallyExposed", assure.IsPoliticallyExposed);
 
-                
+
 
                 if (conn.State == ConnectionState.Open)
                 {

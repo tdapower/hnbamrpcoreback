@@ -16,6 +16,8 @@ using MRPSystemBackend.API.Common;
 using MRPSystemBackend.API.Hospital;
 using MRPSystemBackend.API.LifeAssure;
 using MRPSystemBackend.API.Main;
+using MRPSystemBackend.API.MedicalLetter;
+using MRPSystemBackend.API.MedicalTest;
 using MRPSystemBackend.API.User;
 using MRPSystemBackend.API.WorkflowJob;
 using Newtonsoft.Json.Serialization;
@@ -60,7 +62,8 @@ namespace MRPSystemBackend
             services.AddScoped<ICommonRepository, CommonRepository>();
             services.AddScoped<IWorkflowJobRepository, WorkflowJobRepository>();
             services.AddScoped<IHospitalRepository, HospitalRepository>();
-            
+            services.AddScoped<IMedicalLetterRepository, MedicalLetterRepository>();
+            services.AddScoped<IMedicalTestRepository, MedicalTestRepository>();
 
         }
 
