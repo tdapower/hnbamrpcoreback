@@ -44,7 +44,7 @@ namespace MRPSystemBackend.API.Main
             {
                 return BadRequest("Bank code is mandatory");
             }
-            
+
             var result = mainRepository.GenerateProposalNo(bankCode);
             if (result == null)
             {
@@ -55,13 +55,13 @@ namespace MRPSystemBackend.API.Main
 
 
         [Route("SaveMainDetails")]
-        public IActionResult SaveMainDetails([FromBody] JObject  data)
+        public IActionResult SaveMainDetails([FromBody] JObject data)
         {
             Main main = data["proposalData"].ToObject<Main>();
             Assure assure1 = data["assure1Data"].ToObject<Assure>();
             Assure assure2 = data["assure2Data"].ToObject<Assure>();
 
-            if (data == null )
+            if (data == null)
             {
                 return BadRequest();
             }
@@ -85,6 +85,17 @@ namespace MRPSystemBackend.API.Main
             return Ok(result);
         }
 
+        [HttpPost]
+        [Route("SearchUnassignedMainData")]
+        public IActionResult SearchUnassignedMainData([FromBody] SearchMain searchMain)
+        {
+            var result = mainRepository.SearchUnassignedMainData(searchMain);
+            if (result == null)
+            {
+                return NotFound();
+            }
+            return Ok(result);
+        }
 
     }
 }

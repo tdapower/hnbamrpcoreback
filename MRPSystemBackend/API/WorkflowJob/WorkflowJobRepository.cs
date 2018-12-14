@@ -158,7 +158,35 @@ namespace MRPSystemBackend.API.WorkflowJob
 
             return result;
         }
+        public IEnumerable<WorkflowJob> GetUnassWorkflowJobs()
+        {
+            IEnumerable<WorkflowJob> result = null;
+            try
+            {
+                var dyParam = new OracleDynamicParameters();
 
+                dyParam.Add("ResultCursor", OracleDbType.RefCursor, ParameterDirection.Output);
+
+                var conn = this.GetConnection();
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    var query = "MRPSGetUnassWorkflowJobs";
+
+                    result = SqlMapper.Query<WorkflowJob>(conn, query, param: dyParam, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
         public WorkflowJob GetWorkflowjobByJobNo(string jobNo)
         {
 
@@ -221,7 +249,7 @@ namespace MRPSystemBackend.API.WorkflowJob
                 p.Add("IPBankId", workflowJob.BankId);
                 p.Add("IPBankBranchId", workflowJob.BankBranchId);
                 p.Add("IPShouldCommit", 1);
-                
+
                 if (conn.State == ConnectionState.Open)
                 {
                     conn.Execute("MRPSUpdateWorkflowJob", p, commandType: CommandType.StoredProcedure);

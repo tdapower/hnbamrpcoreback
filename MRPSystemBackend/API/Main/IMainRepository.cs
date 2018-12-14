@@ -13,7 +13,7 @@ namespace MRPSystemBackend.API.Main
         Main GetMainRecordById(int assureId);
 
         IEnumerable<Main> SearchMainData(SearchMain searchMain);
-
+        IEnumerable<Main> SearchUnassignedMainData(SearchMain searchMain);
         MainSaveReturnObj SaveMain(Main main, Assure assure1, Assure assure2);
         MainSaveReturnObj AddMainRecord(Main assure);
         void UpdateMainRecord(Main assure);

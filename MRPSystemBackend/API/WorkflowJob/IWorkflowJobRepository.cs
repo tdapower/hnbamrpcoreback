@@ -10,6 +10,7 @@ namespace MRPSystemBackend.API.WorkflowJob
     {
 
         IEnumerable<WorkflowJob> SearchWorkflowJob(SearchWorkflowJob searchWorkflowJob);
+        IEnumerable<WorkflowJob> GetUnassWorkflowJobs( );
         string CreateWorkflowJob(WorkflowJob workflowJob);
 
         string CreateWorkflowJobWithTransaction(WorkflowJob workflowJob, IDbConnection connection);

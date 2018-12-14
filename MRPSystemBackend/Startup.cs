@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using MRPSystemBackend.API.Common;
+using MRPSystemBackend.API.Employee;
 using MRPSystemBackend.API.Hospital;
 using MRPSystemBackend.API.LifeAssure;
 using MRPSystemBackend.API.Main;
@@ -64,6 +65,7 @@ namespace MRPSystemBackend
             services.AddScoped<IHospitalRepository, HospitalRepository>();
             services.AddScoped<IMedicalLetterRepository, MedicalLetterRepository>();
             services.AddScoped<IMedicalTestRepository, MedicalTestRepository>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
         }
 

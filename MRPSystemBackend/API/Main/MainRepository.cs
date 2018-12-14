@@ -421,5 +421,46 @@ namespace MRPSystemBackend.API.Main
 
             return result;
         }
+
+        public IEnumerable<Main> SearchUnassignedMainData(SearchMain searchMain)
+        {
+            IEnumerable<Main> result = null;
+            try
+            {
+                var dyParam = new OracleDynamicParameters();
+
+                dyParam.Add("IPQuotationNo", OracleDbType.Varchar2, ParameterDirection.Input, searchMain.QuotationNo);
+                dyParam.Add("IPProposalNo", OracleDbType.Varchar2, ParameterDirection.Input, searchMain.ProposalNo);
+                dyParam.Add("IPBankId", OracleDbType.Int32, ParameterDirection.Input, searchMain.BankId);
+                dyParam.Add("IPHnbaBranchCode", OracleDbType.Varchar2, ParameterDirection.Input, searchMain.HnbaBranchCode);
+                dyParam.Add("IPLoanTypeId", OracleDbType.Int32, ParameterDirection.Input, searchMain.LoanTypeId);
+                dyParam.Add("IPLife1NIC", OracleDbType.Varchar2, ParameterDirection.Input, searchMain.Life1NIC);
+                dyParam.Add("IPLife1Name", OracleDbType.Varchar2, ParameterDirection.Input, searchMain.Life1Name);
+                dyParam.Add("IPLife2NIC", OracleDbType.Varchar2, ParameterDirection.Input, searchMain.Life2NIC);
+                dyParam.Add("IPLife2Name", OracleDbType.Varchar2, ParameterDirection.Input, searchMain.Life2Name);
+
+                dyParam.Add("OPResult", OracleDbType.RefCursor, ParameterDirection.Output);
+
+
+                var conn = this.GetConnection();
+                if (conn.State == ConnectionState.Closed)
+                {
+                    conn.Open();
+                }
+
+                if (conn.State == ConnectionState.Open)
+                {
+                    var query = "MRPSSearchUnasMainDetails";
+
+                    result = SqlMapper.Query<Main>(conn, query, param: dyParam, commandType: CommandType.StoredProcedure);
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+            return result;
+        }
     }
 }

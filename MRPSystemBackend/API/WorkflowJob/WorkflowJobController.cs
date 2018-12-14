@@ -24,7 +24,7 @@ namespace MRPSystemBackend.API.WorkflowJob
         [Route("CreateWorkflowJob")]
         public IActionResult CreateWorkflowJob(WorkflowJob workflowJob)
         {
-            
+
             var result = workflowJobRepository.CreateWorkflowJob(workflowJob);
             if (result == null)
             {
@@ -46,6 +46,17 @@ namespace MRPSystemBackend.API.WorkflowJob
             return Ok(result);
         }
 
+        [HttpGet]
+        [Route("GetUnassWorkflowJobs")]
+        public IActionResult GetUnassWorkflowJobs()
+        {
+            var result = workflowJobRepository.GetUnassWorkflowJobs();
+            if (result == null)
+            {
+                return NotFound();
+            }
+            return Ok(result);
+        }
 
 
         [HttpPost]

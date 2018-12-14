@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+This file is used by the publish/package process of your Web project. You can customize the behavior of this process
+by editing this MSBuild file. In order to learn more about this please visit https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <_PublishTargetUrl>D:\Development\MRP System\Core System\Backend\pub</_PublishTargetUrl>
+  </PropertyGroup>
+  <ItemGroup>
+    <DestinationConnectionStrings Include="OracleConStr">
+      <Value>user id=hnba_crc%3bpassword=HNBACRC%3bdata source=%28DESCRIPTION=%28ADDRESS=%28PROTOCOL=tcp%29%28HOST=192.168.10.97%29%28PORT=1521%29%29%28CONNECT_DATA=%28SERVICE_NAME=PRODDB%29%29%29</Value>
+    </DestinationConnectionStrings>
+  </ItemGroup>
+</Project>
